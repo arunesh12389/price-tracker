@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Price Tracker</title>
+    <style>
+      body { 
+        font-family: sans-serif; 
+        padding: 10px;
+        width: 350px; /* Fixed width for popup */
+      }
+      #statusMessage {
+        display: none;
+        padding: 8px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+      #graphContainer {
+        display: none;
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .recommendation {
+        margin-top: 10px;
+        padding: 8px;
+        background-color: #f8f8f8;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 14px;
+      }
+      #priceThreshold {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        box-sizing: border-box;
+      }
+    </style>
+    <!-- Add Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h3>Product Info</h3>
+    <p><strong>Name:</strong> <span id="productName">-</span></p>
+    <p><strong>Price:</strong> ₹<span id="productPrice">-</span></p>
+    
+    <!-- Add price threshold input -->
+    <input 
+      type="number" 
+      id="priceThreshold" 
+      placeholder="Notify me if price drops below (₹)"
+      min="0"
+      step="0.01"
+    >
+    
+    <button id="trackBtn">Track This Product</button>
+    
+    <!-- Status message container -->
+    <div id="statusMessage"></div>
+    
+    <!-- Graph visualization container -->
+    <div id="graphContainer">
+      <canvas id="graphCanvas"></canvas>
+      <div class="recommendation">
+        <strong>Recommendation:</strong> 
+        <span id="recText"></span> 
+        (<span id="confText"></span>% confidence)
+      </div>
+    </div>
+
+    <script src="popup.js" defer></script>
+  </body>
+</html>
